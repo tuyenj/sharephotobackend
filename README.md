@@ -7,4 +7,4 @@
 
 # 成果物
 
-[Do van Tuyen, 小野崎文哉 2019/10 ~ ](https://github.com/j-yado/initial-training/tree/training-13-14-2019-10)  
+- [Do van Tuyen, 小野崎文哉 2019/10 ~ ](https://github.com/j-yado/initial-training/tree/training-13-14-2019-10)  
