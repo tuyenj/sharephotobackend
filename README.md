@@ -16,4 +16,4 @@
 |社員番号|氏名|ブランチ|
 |---|---|---|
 |0039|DO VAN TUYEN|[Vue.js ToDo App](https://github.com/j-yado/initial-training/tree/training-0039-TodoApp)|
-|0040|小野崎 文哉|[Vue.js ToDo App](https://github.com/j-yado/initial-training/tree/training-0040)(https://github.com/j-yado/initial-training/tree/training-0040-nuxt_tutorial)|
+|0040|小野崎 文哉|[Vue.js ToDo App](https://github.com/j-yado/initial-training/tree/training-0040)[nuxt tutorial](https://github.com/j-yado/initial-training/tree/training-0040-nuxt_tutorial)|
