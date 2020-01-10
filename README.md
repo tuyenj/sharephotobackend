@@ -20,3 +20,4 @@
 |0040|小野崎 文哉|[Vue.js ToDo App](https://github.com/j-yado/initial-training/tree/training-0040)
 |0040|小野崎 文哉|[Nuxt Tutorial](https://github.com/j-yado/initial-training/tree/training-0040-nuxt_tutorial)
 |0040|小野崎 文哉|[Nuxt Typescript Vuetify](https://github.com/j-yado/initial-training/tree/training-0040-nuxt_typescript_vuetify)
+|0040|小野崎 文哉|[Laravel Vue](https://github.com/j-yado/initial-training/tree/training-0040-laravel_vue)
