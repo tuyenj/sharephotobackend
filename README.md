@@ -18,6 +18,7 @@
 |0039|DO VAN TUYEN|[Vue.js ToDo App](https://github.com/j-yado/initial-training/tree/training-0039-TodoApp)|
 |0039|DO VAN TUYEN|[Vuex-TypeScript-TodoApp](https://github.com/j-yado/initial-training/tree/training-0039-vuex_typescript_todoapp)|
 |0039|DO VAN TUYEN|[Nuxtjs Tutorial](https://github.com/j-yado/initial-training/tree/training-0039-Nuxtjs_Tutorial)|
+|0039|DO VAN TUYEN|[Nuxtjs-Typescript-Tutorial](https://github.com/j-yado/initial-training/tree/training-0039-Nuxtjs_Typescript_Tutorial)|
 |0040|小野崎 文哉|[Vue.js ToDo App](https://github.com/j-yado/initial-training/tree/training-0040)
 |0040|小野崎 文哉|[Nuxt Tutorial](https://github.com/j-yado/initial-training/tree/training-0040-nuxt_tutorial)
 |0040|小野崎 文哉|[Nuxt Typescript Vuetify](https://github.com/j-yado/initial-training/tree/training-0040-nuxt_typescript_vuetify)
