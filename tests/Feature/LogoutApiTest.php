@@ -18,12 +18,13 @@ class LogoutApiTest extends TestCase
 
 
     public function test_ログアウトができる()
-  {
-      $response = $this->actingAs($this->user);
-
-      $response->json('POST',route('logout'));
-
-
-      $this->assertAuthenticatedAs($this->user);
-  }
+    {
+        $this->json('POST', route('login'), [
+            'email' => $this->user->email,
+            'password' => 'password'
+        ]);
+        $response = $this->json('POST', route('logout'));
+        $response->assertStatus(200);
+        $this->assertGuest();
+    }
 }

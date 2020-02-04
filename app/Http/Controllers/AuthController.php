@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\User as UserResource;
 use App\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    private $auth;
+
     /**
      * @param Request $request
      * @return UserResource|void
@@ -61,10 +64,11 @@ class AuthController extends Controller
     }
 
     /**
-     * logout user
+     * Logout
      */
     public function logout()
     {
-       \auth()->logout();
+       auth()->logout();
+       return response()->json(['message'=>'logout success'],200);
     }
 }
