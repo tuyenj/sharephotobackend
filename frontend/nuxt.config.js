@@ -12,7 +12,10 @@ export default {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
-    ]
+    ],
+    common: {
+      'Accept': 'application/json, text/plain, */*'
+    },
   },
   /*
   ** Customize the progress-bar color
@@ -43,7 +46,9 @@ export default {
     'nuxt-fontawesome',
   ],
   axios: {
-    bashURL: "https://localhost:8080/api"
+    bashURL: "http://localhost:8080/api",
+    proxyHeaders: false,
+    credentials: false
   },
 
   auth: {

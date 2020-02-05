@@ -7,6 +7,6 @@
   import {Vue} from 'vue-property-decorator';
 
   export default class Index extends Vue {
-
+      name:string = "Index"
   }
 </script>
