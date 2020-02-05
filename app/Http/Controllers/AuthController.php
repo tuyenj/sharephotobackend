@@ -46,14 +46,14 @@ class AuthController extends Controller
 
     /**
      * @param Request $request
-     * @return UserResource|void
+     * @return UserResource
      */
     public function login(Request $request)
     {
         $token = auth()->attempt($request->only(['email', 'password']));
 
         if (!$token) {
-            return abort(401);
+            abort(401);
         }
 
         return (new UserResource($request->user()))->additional([
@@ -64,11 +64,20 @@ class AuthController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return UserResource
+     */
+    public function user(Request $request)
+    {
+        return new UserResource($request->user());
+    }
+
+    /**
      * Logout
      */
     public function logout()
     {
-       auth()->logout();
-       return response()->json(['message'=>'logout success'],200);
+        auth()->logout();
+        return response()->json(['message' => 'logout success'], 200);
     }
 }

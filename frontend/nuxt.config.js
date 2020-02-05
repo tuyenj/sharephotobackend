@@ -28,7 +28,9 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [
+    {src: 'plugins/axios.js', ssr: false}
+  ],
   /*
   ** Nuxt.js dev-modules
   */
@@ -46,9 +48,7 @@ export default {
     'nuxt-fontawesome',
   ],
   axios: {
-    bashURL: "http://localhost:8080/api",
-    proxyHeaders: false,
-    credentials: false
+    baseURL: "https://localhost/api",
   },
 
   auth: {
@@ -59,6 +59,11 @@ export default {
             url: "login",
             method: "post",
             propertyName: "meta.token"
+          },
+          user: {
+            url: "user",
+            method: "get",
+            propertyName: "data"
           },
           logout: {
             url: "logout",

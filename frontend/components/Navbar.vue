@@ -23,6 +23,6 @@
 
   @Component
   export default class NavBar extends Vue {
-    name:string = "NavBar"
+    name: string = "NavBar"
   }
 </script>
