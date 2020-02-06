@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="box">
-      <h2 class="title">ユーザーログイン</h2>
+      <h2 class="title is-5">ユーザーログイン</h2>
       <form @submit.prevent="login">
         <div class="field">
           <p class="control has-icons-left has-icons-right">
@@ -10,6 +10,9 @@
           <font-awesome-icon :icon="['fas','envelope']" aria-hidden="true"></font-awesome-icon>
         </span>
           </p>
+          <div v-if="errors !==''">
+            <p v-for="er in errors.email" class="is-size-7 has-text-danger">{{er}}</p>
+          </div>
         </div>
         <div class="field">
           <p class="control has-icons-left">
@@ -18,10 +21,13 @@
           <font-awesome-icon :icon="['fas','lock']" aria-hidden="true"></font-awesome-icon>
         </span>
           </p>
+          <div v-if="errors !==''">
+            <p v-for="p in errors.password" class="is-size-7 has-text-danger">{{p}}</p>
+          </div>
         </div>
         <div class="field">
           <button class="button is-info" type="submit">login</button>
-          <button class="button is-danger">cancel</button>
+          <button @click="reset" class="button is-danger">cancel</button>
         </div>
       </form>
     </div>
@@ -42,7 +48,14 @@
     async login() {
       await this.$auth.loginWith('local', {
         data: this.formData
+      }).then(() => {
+        this.$router.push('/');
+      }).catch((err: string) => {
+        console.log(err);
       });
+    };
+
+    reset() {
       this.$router.push('/');
     }
   }

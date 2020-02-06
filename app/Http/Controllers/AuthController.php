@@ -20,8 +20,8 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'email' => 'email|required|unique:users,email',
             'name' => 'required',
+            'email' => 'email|required|unique:users,email',
             'password' => 'required|min:8',
         ]);
 
@@ -47,9 +47,15 @@ class AuthController extends Controller
     /**
      * @param Request $request
      * @return UserResource
+     * @throws ValidationException
      */
     public function login(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'email|required',
+            'password' => 'required',
+        ]);
+
         $token = auth()->attempt($request->only(['email', 'password']));
 
         if (!$token) {

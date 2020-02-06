@@ -13,9 +13,6 @@ export default {
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ],
-    common: {
-      'Accept': 'application/json, text/plain, */*'
-    },
   },
   /*
   ** Customize the progress-bar color
@@ -88,7 +85,7 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    }
+    },
   },
   fontawesome: {
     imports: [

@@ -4,6 +4,10 @@ export const getters = {
   },
 
   user(state: any) {
-    return state.auth.user
+    if (state.auth.loggedIn) {
+      return state.auth.user.name;
+    } else {
+      return '';
+    }
   }
 }
