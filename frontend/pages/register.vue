@@ -52,7 +52,6 @@
   @Component
   export default class Register extends Vue {
     name: string = "Register";
-    et: any = '';
 
     userData: User = {
       name: '',
@@ -62,10 +61,6 @@
     $axios: any;
     $auth: any;
 
-    get getError() {
-      return this.et = 2;
-    }
-
     async register() {
       await this.$axios.$post('register', this.userData).then((data: any) => {
         this.$auth.loginWith("local", {
@@ -74,6 +69,7 @@
             password: this.userData.password
           }
         });
+      }).then(() => {
         this.$router.push('/');
       }).catch((err: any) => {
         console.log(err)

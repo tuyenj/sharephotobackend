@@ -10,7 +10,7 @@
           <font-awesome-icon :icon="['fas','envelope']" aria-hidden="true"></font-awesome-icon>
         </span>
           </p>
-          <div v-if="errors !==''">
+          <div v-if="errors.email !==''">
             <p v-for="er in errors.email" class="is-size-7 has-text-danger">{{er}}</p>
           </div>
         </div>
@@ -21,7 +21,7 @@
           <font-awesome-icon :icon="['fas','lock']" aria-hidden="true"></font-awesome-icon>
         </span>
           </p>
-          <div v-if="errors !==''">
+          <div v-if="errors.password !==''">
             <p v-for="p in errors.password" class="is-size-7 has-text-danger">{{p}}</p>
           </div>
         </div>
@@ -46,12 +46,12 @@
     $auth: any;
 
     async login() {
-      await this.$auth.loginWith('local', {
+      this.$auth.loginWith('local', {
         data: this.formData
       }).then(() => {
         this.$router.push('/');
-      }).catch((err: string) => {
-        console.log(err);
+      }).catch((error: any) => {
+        console.error(error);
       });
     };
 

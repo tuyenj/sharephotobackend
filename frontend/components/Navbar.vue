@@ -33,7 +33,7 @@
     $auth: any;
 
     logout() {
-      this.$auth.logout();
+        this.$auth.logout();
     }
   }
 </script>
