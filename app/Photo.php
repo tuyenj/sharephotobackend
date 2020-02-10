@@ -51,7 +51,7 @@ class Photo extends Model
 
         $id = "";
         for ($i = 0; $i < self::ID_LENGTH; $i++) {
-            $id .= $characters[random_bytes(0, $length - 1)];
+            $id .= $characters[random_int(0, $length - 1)];
         }
         return $id;
     }

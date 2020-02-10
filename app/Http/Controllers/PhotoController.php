@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePhoto;
 use App\Photo;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PhotoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware['jwt'];
+        $this->middleware('auth:api');
     }
 
     public function create(StorePhoto $request)
@@ -24,17 +25,16 @@ class PhotoController extends Controller
         // 本来の拡張子を組み合わせてファイル名とする
         $photo->filename = $photo->id . '.' . $extension;
 
-        \Storage::cloud()->putFileAs('', $request->photo, $photo->filename, 'public');
+        \Storage::cloud()->putFileAs('', $request->photo, $photo->filename, '');
 
         \DB::beginTransaction();
         try {
-            \Auth::user()->photos()->save();
-            \DB::commit();
+            Auth::user()->photos()->save($photo);
+            DB::commit();
         } catch (\Exception $exception) {
-            DB:
-            db_rollback();
+            DB::rollBack();
             \Storage::cloud()->delete($photo->filename);
-            throw  $exception;
+            throw $exception;
         }
 
         return response($photo, 201);
