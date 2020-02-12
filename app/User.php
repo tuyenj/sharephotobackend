@@ -25,7 +25,8 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'id', 'email', 'email_verified_at', 'password', 'remember_token',
+        self::CREATED_AT, self::UPDATED_AT,
     ];
 
     /**
@@ -36,6 +37,11 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @var array
+     */
+    protected $visible = ['name'];
 
     /**
      * @return mixed

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import {mapGetters} from 'vuex';
 
-export default function ({$axios, store, redirect}) {
+export default function ({$axios, store, $nuxt}) {
   $axios.setToken('access_token');
 
   $axios.onResponse(config => {
@@ -11,7 +11,6 @@ export default function ({$axios, store, redirect}) {
     if (typeof error['response'] !== 'undefined' && typeof error.response['status'] !== 'undefined' && error.response.status === 422) {
       store.dispatch("validation/setErrors", error.response.data.errors);
     }
-
     return Promise.reject(error);
   });
   $axios.onRequest(() => {

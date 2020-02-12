@@ -4,8 +4,8 @@ namespace App;
 
 use Arr;
 use Exception;
-use foo\bar;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Photo extends Model
 {
@@ -18,6 +18,10 @@ class Photo extends Model
      * @var string
      */
     private $filename;
+
+    protected $appends = ['url'];
+
+    protected $visible = ['id', 'owner', 'url'];
 
     public function __construct(array $attributes = [])
     {
@@ -54,5 +58,21 @@ class Photo extends Model
             $id .= $characters[random_int(0, $length - 1)];
         }
         return $id;
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id', 'users');
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        return \Storage::cloud()->url($this->attributes['filename']);
     }
 }

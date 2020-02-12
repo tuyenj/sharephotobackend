@@ -9,24 +9,27 @@
               <label class="file-label">
                 <input class="file-input" type="file" name="resume" @change="fileChange">
                 <span class="file-cta">
-              <span class="file-icon">
-                 <font-awesome-icon :icon="['fas','upload']" aria-hidden="true"></font-awesome-icon>
-              </span>
-                <span class="file-label">
-                Choose a file…
-              </span>
-                </span>
+                    <span class="file-icon">
+                       <font-awesome-icon :icon="['fas','upload']" aria-hidden="true"></font-awesome-icon>
+                    </span>
+                    <span class="file-label">
+                    Choose a file…
+                    </span>
+                  </span>
                 <span class="file-name is-fullwidth" v-if="this.image !== null">
-                    {{this.image.name}}
-                </span>
+                      {{this.image.name}}
+                  </span>
               </label>
+            </div>
+            <div class="field" v-if="errors !==''">
+              <p v-for="n in errors.photo" class="is-size-7 has-text-danger">{{n}}</p>
             </div>
             <div class="field">
               <button class="button is-success is-small has-margin-top-15" @click="submit">Upload</button>
             </div>
           </div>
           <figure class="image is-128x128" v-if="this.image !== null">
-            <img :src="preview"></img>
+            <img :src="preview" @error="imageLoadError"></img>
           </figure>
         </div>
       </div>
@@ -50,8 +53,15 @@
     async submit() {
       const formData = new FormData();
       formData.append('photo', this.image);
-      const response = await this.$axios.$post('/photos/new', formData);
-      console.log(response);
+      const response = await this.$axios.$post('/photos/new', formData).then(() => {
+        this.$router.push('/');
+      }).catch((e: any) => {
+        console.log(e);
+      });
+    }
+
+    imageLoadError(e: any) {
+      e.target.src = require('~/assets/images/no-image.jpg');
     }
   }
 </script>
@@ -63,5 +73,6 @@
   .image img {
     width: 128px;
     height: 128px;
+    border: solid 1px #ececec;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="box">
-      <h2 class="title is-5">ユーザーログイン</h2>
+    <div class="box column is-half is-offset-one-quarter">
+      <h2 class="title is-6">ユーザーログイン</h2>
       <form @submit.prevent="login">
         <div class="field">
           <p class="control has-icons-left has-icons-right">
@@ -60,3 +60,8 @@
     }
   }
 </script>
+<style scoped>
+  .box {
+    margin-top: 10px;
+  }
+</style>

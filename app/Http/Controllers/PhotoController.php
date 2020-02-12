@@ -11,7 +11,7 @@ class PhotoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api')->except(['index']);
     }
 
     public function create(StorePhoto $request)
@@ -38,5 +38,10 @@ class PhotoController extends Controller
         }
 
         return response($photo, 201);
+    }
+
+    public function index()
+    {
+        return Photo::with(['owner'])->orderBy('created_at', 'desc')->paginate();
     }
 }

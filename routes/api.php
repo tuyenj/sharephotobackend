@@ -8,3 +8,4 @@ Route::get('/user', 'AuthController@user')->name('user');
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
 Route::post('/photos/new', 'PhotoController@create')->name('photo.create');
+Route::get('/photos', 'PhotoController@index')->name('photo.index');

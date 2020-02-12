@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="box">
-      <h2 class="title is-5">ユーザー登録</h2>
+      <h2 class="title is-6">ユーザー登録</h2>
       <div class="field">
         <div class="control">
           <p class="control has-icons-left has-icons-right">
@@ -47,13 +47,11 @@
 </template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
-  import User from '../Models/index';
 
   @Component
   export default class Register extends Vue {
     name: string = "Register";
-
-    userData: User = {
+    userData = {
       name: '',
       email: '',
       password: ''
@@ -78,3 +76,8 @@
     }
   }
 </script>
+<style scoped>
+  .box {
+    margin-top: 10px;
+  }
+</style>

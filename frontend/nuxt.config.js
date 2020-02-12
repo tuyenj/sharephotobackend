@@ -43,6 +43,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     'nuxt-fontawesome',
+    ['nuxt-buefy', { css: false, materialDesignIcons: false }],
   ],
   axios: {
     baseURL: "https://localhost/api",
