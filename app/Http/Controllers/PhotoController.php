@@ -6,6 +6,7 @@ use App\Http\Requests\StorePhoto;
 use App\Photo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Photo as PhotoResource;
 
 class PhotoController extends Controller
 {
@@ -25,7 +26,7 @@ class PhotoController extends Controller
         // 本来の拡張子を組み合わせてファイル名とする
         $photo->filename = $photo->id . '.' . $extension;
 
-        \Storage::cloud()->putFileAs('', $request->photo, $photo->filename, '');
+        \Storage::cloud()->putFileAs('', $request->photo, $photo->filename, 'public');
 
         \DB::beginTransaction();
         try {
@@ -42,6 +43,7 @@ class PhotoController extends Controller
 
     public function index()
     {
-        return Photo::with(['owner'])->orderBy('created_at', 'desc')->paginate();
+        $photo = Photo::with(['owner'])->orderBy('created_at', 'desc')->paginate();
+        return PhotoResource::collection($photo);
     }
 }

@@ -43,7 +43,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     'nuxt-fontawesome',
-    ['nuxt-buefy', { css: false, materialDesignIcons: false }],
+    ['nuxt-buefy', {css: false, materialDesignIcons: false, defaultIconPack: 'fas'}],
   ],
   axios: {
     baseURL: "https://localhost/api",
@@ -85,7 +85,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, { isClient }) {
+    extend(config, {isClient}) {
       if (isClient) {
         config.devtool = 'source-map'
       }
