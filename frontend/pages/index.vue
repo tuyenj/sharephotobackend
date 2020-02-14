@@ -8,13 +8,38 @@
         </div>
       </div>
     </div>
-    <nav class="pagination is-small is-centered" role="navigation" aria-label="pagination">
-      <ul class="pagination-list">
-        <li v-for="(key,value) in links">
-          <a @click="changePage(key)" class="pagination-link">{{value}}</a>
-        </li>
-      </ul>
-    </nav>
+    <div v-if="links.length !== 0" class="field has-addons has-addons-centered">
+      <p v-if="links.first !== null" class="control">
+        <button class="button is-small" @click="changePage(links.first)">first</button>
+      </p>
+      <p v-else class="control">
+        <button class="button is-small " disabled>first</button>
+      </p>
+      <p v-if="links.prev !== null" class="control">
+        <button class="button is-small" @click="changePage(links.prev)">prev</button>
+      </p>
+      <p v-else class="control">
+        <button class="button is-small" disabled>prev</button>
+      </p>
+      <p v-if="links.next !== null" class="control">
+        <button class="button is-small"
+                　@click="changePage(links.next)">next
+        </button>
+      </p>
+      <p v-else class="control">
+        <button class="button is-small" disabled>next
+        </button>
+      </p>
+      <p v-if="links.last !== null" class="control">
+        <button class="button is-small"
+                　@click="changePage(links.last)">last
+        </button>
+      </p>
+      <p v-else class="control">
+        <button class="button is-small" disabled>last
+        </button>
+      </p>
+    </div>
   </div>
 </template>
 <script lang="ts">

@@ -46,7 +46,7 @@ class AuthController extends Controller
 
     /**
      * @param Request $request
-     * @return UserResource
+     * @return JsonResponse
      * @throws ValidationException
      */
     public function login(Request $request)
@@ -59,7 +59,11 @@ class AuthController extends Controller
         $token = auth()->attempt($request->only(['email', 'password']));
 
         if (!$token) {
-            abort(401);
+           return response()->json([
+               'errors'=>[
+                   'email'=>['email not found!!']
+               ]
+           ],401);
         }
 
         return (new UserResource($request->user()))->additional([
